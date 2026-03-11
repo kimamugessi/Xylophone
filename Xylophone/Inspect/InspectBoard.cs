@@ -1,0 +1,73 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Xylophone.Algorithm;
+using Xylophone.Core;
+using Xylophone.Teach;
+using OpenCvSharp;
+
+namespace Xylophone.Inspect
+{
+    public class InspectBoard
+    {
+        public InspectBoard() { }
+        public bool Inspect(InspWindow window) 
+        {
+            if (window == null)
+                return false;
+            if (!InspectWindow(window))
+                return false;
+            return true;
+        }
+        private bool InspectWindow(InspWindow window)
+        {
+            window.ResetInspResult();
+            foreach (InspAlgorithm algo in window.AlgorithmList)
+            {
+                if (algo.IsUse == false) continue;
+                if (!algo.DoInspect()) return false;
+
+                string resultInfo = string.Join("\r\n", algo.ResultString);
+
+                InspResult inspResult = new InspResult
+                {
+                    ObjectID = window.UID,
+                    InspType = algo.InspectType,
+                    IsDefect = algo.IsDefect,
+                    ResultInfos = resultInfo
+                };
+
+                switch (algo.InspectType)
+                {
+                    case InspectType.InspMatch:
+                        MatchAlgorithm matchAlgo = algo as MatchAlgorithm;
+                        inspResult.ResultValue = $"{matchAlgo.OutScore}";
+                        break;
+                }
+                List<DrawInspectInfo> resultArea = new List<DrawInspectInfo>();
+                int resultCnt = algo.GetResultRect(out resultArea);
+                inspResult.ResultRectList = resultArea;
+
+                window.AddInspResult(inspResult);
+            }
+            return true;
+
+        }
+        public bool InspectWindowList(List<InspWindow> windowList)
+        {
+            if (windowList.Count <= 0) return false;
+            Point alignOffset = new Point(0, 0);
+            
+            foreach (InspWindow window in windowList)
+            {
+                window.SetInspOffset(alignOffset);
+                if (!InspectWindow(window))
+                    return false;
+            }
+            return true;
+        }
+
+    }
+}
