@@ -327,16 +327,6 @@
     <EmbeddedResource Include="UIControl\PatternImageEditor.resx">
       <DependentUpon>PatternImageEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Algorithm\BlobAlgorithm.cs.bak" />
-    <None Include="Algorithm\InspAlgorithm.cs.bak" />
-    <None Include="Core\Define.cs.bak" />
-    <None Include="Core\ImageSpace.cs.bak" />
-    <None Include="Core\InspStage.cs.bak" />
-    <None Include="Core\PreviewImage.cs.bak" />
-    <None Include="Grab\GrabModel.cs.bak" />
-    <None Include="Grab\HikRobotCam.cs.bak" />
-    <None Include="Grab\WebCam.cs.bak" />
-    <None Include="Inspect\InspWorker.cs.bak" />
     <None Include="log4net.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -348,20 +338,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Property\BinaryProp.cs.bak" />
-    <None Include="Property\BinaryProp.Designer.cs.bak" />
-    <None Include="Sequence\VisionSequence.cs.bak" />
-    <None Include="Setting\CameraSetting.cs.bak" />
-    <None Include="Setting\CameraSetting.Designer.cs.bak" />
-    <None Include="Setting\SettingXml.cs.bak" />
-    <None Include="Setting\SetupForm.cs.bak" />
-    <None Include="Teach\InspWindow.cs.bak" />
-    <None Include="Teach\InspWindowFactory.cs.bak" />
-    <None Include="Teach\Model.cs.bak" />
-    <None Include="UIControl\ImageViewCtrl.cs.bak" />
-    <None Include="UIControl\ImageViewCtrl.Designer.cs.bak" />
-    <None Include="UIControl\PatternImageEditor.cs.bak" />
-    <None Include="UIControl\RangeTrackbar.cs.bak" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
